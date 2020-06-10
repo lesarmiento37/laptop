@@ -1,0 +1,96 @@
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting XAUTHORITY=/home/leonardo/.Xauthority
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting LC_MEASUREMENT=es_CO.UTF-8
+dbus-update-activation-environment: setting LC_PAPER=es_CO.UTF-8
+dbus-update-activation-environment: setting LC_MONETARY=es_CO.UTF-8
+dbus-update-activation-environment: setting LANG=en_US.UTF-8
+dbus-update-activation-environment: setting GDM_LANG=en_US
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting LC_NAME=es_CO.UTF-8
+dbus-update-activation-environment: setting XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/leonardo
+dbus-update-activation-environment: setting USER=leonardo
+dbus-update-activation-environment: setting DESKTOP_SESSION=cinnamon
+dbus-update-activation-environment: setting PWD=/home/leonardo
+dbus-update-activation-environment: setting HOME=/home/leonardo
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting XDG_SESSION_TYPE=x11
+dbus-update-activation-environment: setting XDG_DATA_DIRS=/usr/share/cinnamon:/usr/share/gnome:/home/leonardo/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+dbus-update-activation-environment: setting XDG_SESSION_DESKTOP=cinnamon
+dbus-update-activation-environment: setting LC_ADDRESS=es_CO.UTF-8
+dbus-update-activation-environment: setting LC_NUMERIC=es_CO.UTF-8
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting SHELL=/bin/bash
+dbus-update-activation-environment: setting XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+dbus-update-activation-environment: setting IM_CONFIG_PHASE=1
+dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+dbus-update-activation-environment: setting SHLVL=1
+dbus-update-activation-environment: setting LANGUAGE=en_US
+dbus-update-activation-environment: setting LC_TELEPHONE=es_CO.UTF-8
+dbus-update-activation-environment: setting GDMSESSION=cinnamon
+dbus-update-activation-environment: setting LOGNAME=leonardo
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting XDG_RUNTIME_DIR=/run/user/1000
+dbus-update-activation-environment: setting XAUTHORITY=/home/leonardo/.Xauthority
+dbus-update-activation-environment: setting XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+dbus-update-activation-environment: setting XDG_CONFIG_DIRS=/etc/xdg/xdg-cinnamon:/etc/xdg
+dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+dbus-update-activation-environment: setting LC_IDENTIFICATION=es_CO.UTF-8
+dbus-update-activation-environment: setting _=/usr/bin/dbus-update-activation-environment
+[cinnamon-settings-daemon-smartcard] Failed to start: no suitable smartcard driver could be found
+
+(csd-color:1309): color-plugin-WARNING **: 05:34:56.810: failed to get edid: unable to get EDID for output
+
+(csd-color:1309): color-plugin-WARNING **: 05:34:56.862: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+[cinnamon-settings-daemon-smartcard] Failed to start: no suitable smartcard driver could be found
+Cinnamon warning: Software rendering detected: llvmpipe (LLVM 8.0, 256 bits)
+Clutter-Message: 05:34:59.180: Sync method: PRESENTATION TIME
+** Message: 05:35:00.559: nemo-desktop: session is cinnamon, establishing proxy
+/usr/share/cinnamon-screensaver/cinnamon-screensaver-main.py:84: Warning: g_base64_encode_step: assertion 'in != NULL' failed
+  css = provider.to_string()
+Cjs-Message: 05:35:08.369: JS LOG: About to start Cinnamon
+Cjs-Message: 05:35:08.369: JS LOG: ACTIVATING SOFTWARE RENDERING
+Cjs-Message: 05:35:08.370: JS LOG: [LookingGlass/error] Cinnamon Software Rendering mode enabled
+Cjs-Message: 05:35:08.450: JS LOG: [LookingGlass/info] Cinnamon.AppSystem.get_default() started in 80 ms
+Cjs-Message: 05:35:08.541: JS LOG: [LookingGlass/info] loading user theme: /usr/share/themes/Mint-Y-Dark/cinnamon/cinnamon.css
+Cjs-Message: 05:35:08.553: JS LOG: [LookingGlass/info] added icon directory: /usr/share/themes/Mint-Y-Dark/cinnamon
+Cjs-Message: 05:35:08.640: JS LOG: [LookingGlass/info] PlacesManager: Updating devices
+Cjs-Message: 05:35:08.647: JS LOG: [LookingGlass/info] loaded at Thu Jun 04 2020 05:35:08 GMT-0500
+Cjs-Message: 05:35:08.647: JS LOG: Cinnamon started at Thu Jun 04 2020 05:35:08 GMT-0500
+Cjs-Message: 05:35:08.669: JS LOG: [LookingGlass/info] ExtensionSystem started in 0 ms
+Cjs-Message: 05:35:08.669: JS LOG: [LookingGlass/info] DeskletManager started in 0 ms
+Cjs-Message: 05:35:08.669: JS LOG: [LookingGlass/info] SearchProviderManager started in 0 ms
+openGL version 3.3 detected (GL3 Cogl Driver)
+MetaSyncRing disabled: couldn't find required GL extensions, or the minimum safe openGL version was not met
+Cjs-Message: 05:35:08.756: JS LOG: [LookingGlass/info] Loaded applet show-desktop@cinnamon.org in 36 ms
+Cjs-Message: 05:35:08.770: JS LOG: [LookingGlass/info] Loaded applet removable-drives@cinnamon.org in 14 ms
+Cjs-Message: 05:35:08.801: JS LOG: [LookingGlass/info] Loaded applet calendar@cinnamon.org in 30 ms
+St-Message: 05:35:08.808: cogl npot texture sizes SUPPORTED
+Cjs-Message: 05:35:08.812: JS LOG: [LookingGlass/info] Role locked: tray
+Cjs-Message: 05:35:08.816: JS LOG: [LookingGlass/info] Loaded applet systray@cinnamon.org in 16 ms
+Cjs-Message: 05:35:08.823: JS LOG: [LookingGlass/info] Loaded applet xapp-status@cinnamon.org in 6 ms
+Cjs-Message: 05:35:08.829: JS LOG: [LookingGlass/info] Role locked: notifications
+Cjs-Message: 05:35:08.839: JS LOG: [LookingGlass/info] Loaded applet notifications@cinnamon.org in 16 ms
+Cjs-Message: 05:35:08.862: JS LOG: [LookingGlass/info] Loaded applet printers@cinnamon.org in 24 ms
+Cjs-Message: 05:35:08.910: JS LOG: [LookingGlass/info] Loaded applet keyboard@cinnamon.org in 48 ms
+Cjs-Message: 05:35:08.999: JS LOG: [LookingGlass/info] Loaded applet power@cinnamon.org in 88 ms
+Cjs-Message: 05:35:09.033: JS LOG: [LookingGlass/info] Role locked: panellauncher
+Cjs-Message: 05:35:09.055: JS LOG: [LookingGlass/info] Loaded applet grouped-window-list@cinnamon.org in 50 ms
+Cjs-Message: 05:35:09.111: JS LOG: [LookingGlass/info] Adding XAppStatusIcon: nm-applet (org.x.StatusIcon.PID-1462-0)
+
+(csd-power:1317): power-plugin-CRITICAL **: 05:35:09.121: abs_to_percentage: assertion 'max > min' failed
+Cjs-Message: 05:35:09.164: JS LOG: [LookingGlass/info] Loaded applet sound@cinnamon.org in 110 ms
+Cjs-Message: 05:35:09.199: JS LOG: [LookingGlass/info] Hiding XAppStatusIcon (we have an applet): nm-applet (org.x.StatusIcon.PID-1462-0)
+Cjs-Message: 05:35:09.206: JS LOG: [LookingGlass/info] Loaded applet network@cinnamon.org in 42 ms
+Cjs-Message: 05:35:09.241: JS LOG: Unknown network device type, is 14
+Cjs-Message: 05:35:09.405: JS LOG: [LookingGlass/info] Loaded applet menu@cinnamon.org in 198 ms
+Cjs-Message: 05:35:09.406: JS LOG: [LookingGlass/info] AppletManager started in 760 ms
+Cjs-Message: 05:35:09.463: JS LOG: [LookingGlass/info] Cinnamon took 1094 ms to start
+** Message: 05:35:10.489: nemo-desktop: session is cinnamon, establishing proxy
+Cjs-Message: 05:35:20.049: JS LOG: [LookingGlass/info] Adding XAppStatusIcon: mintUpdate.py (org.x.StatusIcon.PID-1569-0)
+Cjs-Message: 05:35:39.412: JS LOG: [LookingGlass/info] Adding XAppStatusIcon: mintreport (org.x.StatusIcon.PID-1643-0)
+Cinnamon warning: Buggy client sent a _NET_ACTIVE_WINDOW message with a timestamp of 0 for 0x4c00084 (*revnodos.)
+Gdk-Message: 05:54:07.901: cinnamon-session: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+
