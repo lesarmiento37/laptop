@@ -43,7 +43,6 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMWNKOxdlc:;;;;;;;;:cloxOKNWWMMMMMMMMMMMMMMMMMMMMMMMMMMM
 sleep 2;
 
 rm /home/dionis/1*
-rm testdia.txt
 
 nmap 192.168.19.60 -PN -p ssh | egrep 'open'
 	if [ $? -eq 0 ]
@@ -63,22 +62,22 @@ nmap 192.168.19.52 -PN -p ssh | egrep 'open'
 	   echo "   voltage: 0V " >> /home/dionis/192.168.19.52.txt
 	fi
 
-nmap 192.168.19.244 -PN -p ssh | egrep 'open'
+nmap 192.168.19.163 -PN -p ssh | egrep 'open'
 	if [ $? -eq 0 ]
 	then
-          sshpass -p 'N3tG3st10n19' ssh admin@192.168.19.244 'system health print file=192.168.19.244;tool fetch address=10.255.0.70 src-path=192.168.19.244.txt user=dionis mode=ftp password=dionis dst-path="192.168.19.244.txt" upload=yes'
+          sshpass -p 'N3tG3st10n19' ssh admin@192.168.19.163 'system health print file=192.168.19.163;tool fetch address=10.255.0.70 src-path=192.168.19.163.txt user=dionis mode=ftp password=dionis dst-path="192.168.19.163.txt" upload=yes'
 	else
-	   touch /home/dionis/192.168.19.244.txt 	
-	   echo "   voltage: 0V " >> /home/dionis/192.168.19.244.txt
+	   touch /home/dionis/192.168.19.163.txt 	
+	   echo "   voltage: 0V " >> /home/dionis/192.168.19.163.txt
 	fi
 
-nmap 192.168.19.197 -PN -p ssh | egrep 'open'
+nmap 192.168.19.65 -PN -p ssh | egrep 'open'
 	if [ $? -eq 0 ]
 	then
-          sshpass -p 'N3tG3st10n19' ssh admin@192.168.19.197 'system health print file=192.168.19.197;tool fetch address=10.255.0.70 src-path=192.168.19.197.txt user=dionis mode=ftp password=dionis dst-path="192.168.19.197.txt" upload=yes'
+          sshpass -p 'N3tG3st10n19' ssh admin@192.168.19.65 'system health print file=192.168.19.65;tool fetch address=10.255.0.70 src-path=192.168.19.65.txt user=dionis mode=ftp password=dionis dst-path="192.168.19.65.txt" upload=yes'
 	else
-	   touch /home/dionis/192.168.19.197.txt 	
-	   echo "   voltage: 0V " >> /home/dionis/192.168.19.197.txt
+	   touch /home/dionis/192.168.19.65.txt 	
+	   echo "   voltage: 0V " >> /home/dionis/192.168.19.65.txt
 	fi
 
 nmap 192.168.19.181 -PN -p ssh | egrep 'open'
@@ -90,13 +89,13 @@ nmap 192.168.19.181 -PN -p ssh | egrep 'open'
 	   echo "   voltage: 0V " >> /home/dionis/192.168.19.181.txt
 	fi
 
-nmap 192.168.19.152 -PN -p ssh | egrep 'open'
+nmap 192.168.19.93 -PN -p ssh | egrep 'open'
 	if [ $? -eq 0 ]
 	then
-          sshpass -p 'N3tG3st10n19' ssh admin@192.168.19.152 'system health print file=192.168.19.152;tool fetch address=10.255.0.70 src-path=192.168.19.152.txt user=dionis mode=ftp password=dionis dst-path="192.168.19.152.txt" upload=yes'
+          sshpass -p 'N3tG3st10n19' ssh admin@192.168.19.93 'system health print file=192.168.19.93;tool fetch address=10.255.0.70 src-path=192.168.19.93.txt user=dionis mode=ftp password=dionis dst-path="192.168.19.93.txt" upload=yes'
 	else
-	   touch /home/dionis/192.168.19.152.txt 	
-	   echo "   voltage: 0V " >> /home/dionis/192.168.19.152.txt
+	   touch /home/dionis/192.168.19.93.txt 	
+	   echo "   voltage: 0V " >> /home/dionis/192.168.19.93.txt
 	fi
 
 nmap 192.168.19.87 -PN -p ssh | egrep 'open'
@@ -216,22 +215,31 @@ nmap 192.168.16.170 -PN -p ssh | egrep 'open'
 	   echo "   voltage: 0V " >> /home/dionis/192.168.16.170.txt
 	fi
 
-nmap 192.168.16.56 -PN -p ssh | egrep 'open'
+nmap 192.168.16.117 -PN -p ssh | egrep 'open'
 	if [ $? -eq 0 ]
 	then
-          sshpass -p 'N3tG3st10n16' ssh admin@192.168.16.56 'system health print file=192.168.16.56;tool fetch address=10.255.0.70 src-path=192.168.16.56.txt user=dionis mode=ftp password=dionis dst-path="192.168.16.56.txt" upload=yes'
+          sshpass -p 'N3tG3st10n16' ssh admin@192.168.16.117 'system health print file=192.168.16.117;tool fetch address=10.255.0.70 src-path=192.168.16.117.txt user=dionis mode=ftp password=dionis dst-path="192.168.16.117.txt" upload=yes'
 	else
-	   touch /home/dionis/192.168.16.56.txt 	
-	   echo "   voltage: 0V " >> /home/dionis/192.168.16.56.txt
+	   touch /home/dionis/192.168.16.117.txt 	
+	   echo "   voltage: 0V " >> /home/dionis/192.168.16.117.txt
 	fi
 
-nmap 192.168.1.46 -PN -p ssh | egrep 'open'
+nmap 192.168.1.54 -PN -p ssh | egrep 'open'
 	if [ $? -eq 0 ]
 	then
-          sshpass -p 'N3tG3st10n01' ssh admin@192.168.1.46 'system health print file=192.168.1.46;tool fetch address=10.255.0.70 src-path=192.168.1.46.txt user=dionis mode=ftp password=dionis dst-path="192.168.1.46.txt" upload=yes'  
+          sshpass -p 'N3tG3st10n01' ssh admin@192.168.1.54 'system health print file=192.168.1.54;tool fetch address=10.255.0.70 src-path=192.168.1.54.txt user=dionis mode=ftp password=dionis dst-path="192.168.1.54.txt" upload=yes' 
 	else
-	   touch /home/dionis/192.168.1.46.txt 	
-	   echo "   voltage: 0V " >> /home/dionis/192.168.1.46.txt
+	   touch /home/dionis/192.168.1.54.txt 	
+	   echo "   voltage: 0V " >> /home/dionis/192.168.1.54.txt
+	fi
+
+nmap 192.168.1.43 -PN -p ssh | egrep 'open'
+	if [ $? -eq 0 ]
+	then
+          sshpass -p 'N3tG3st10n01' ssh admin@192.168.1.43 'system health print file=192.168.1.43;tool fetch address=10.255.0.70 src-path=192.168.1.43.txt user=dionis mode=ftp password=dionis dst-path="192.168.1.43.txt" upload=yes'  
+	else
+	   touch /home/dionis/192.168.1.43.txt 	
+	   echo "   voltage: 0V " >> /home/dionis/192.168.1.43.txt
 	fi
 
 nmap 192.168.1.32 -PN -p ssh | egrep 'open'
@@ -315,13 +323,23 @@ nmap 192.168.9.79 -PN -p ssh | egrep 'open'
 	   echo "   voltage: 0V " >> /home/dionis/192.168.9.79.txt
 	fi
 
-#javac testvol/testvol.java
-#java testvol.testvol > testdia.txt
+nmap 192.168.35.63 -PN -p ssh | egrep 'open'
+        if [ $? -eq 0 ]
+        then
+         sshpass -p 'N3tG3st10n35' ssh admin@192.168.35.63 'system health print file=192.168.35.63;tool fetch address=10.255.0.70 src-path=192.168.35.63.txt user=dionis mode=ftp password=dionis dst-path="192.168.35.63.txt" upload=yes'
+        else
+           touch /home/dionis/192.168.35.63.txt
+           echo "   voltage: 0V " >> /home/dionis/192.168.35.63.txt
+        fi
 
-#javac testvol/testvol2.java
-#java  testvol.testvol2
+javac testvol/testvol.java
+java testvol.testvol
 
-#javac testvol/testvol3.java
-#java  testvol.testvol3
+javac testvol/testvol2.java
+java  testvol.testvol2
 
-python3.7 testigosp.py >> testdia.txt
+javac testvol/testvol3.java
+java  testvol.testvol3
+
+python testigosp.py
+#expect ftp.sh
