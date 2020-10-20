@@ -1,0 +1,29 @@
+git add nombre del archivo
+git commit -m 'comentario'
+git push -u origin master
+git remote add origin https://github.com/lesarmiento37/Periferia.git
+
+===========para instalar git y que corra===============
+git init
+git add (archivos o carpetas)
+Luego lanzas el comando para el commit, que se lleva los archivos al repositorio para control de cambios. Es el sig$
+
+git commit -m 'mi primer commit' -> version de algun archivo
+
+git remote add origin https://github.com/lesarmiento37/LinuxS3.git
+
+git config --global user.email lesarmiento@unal.edu.co
+
+git config --global user.name lesarmiento37
+
+git push -u origin master
+
+si no me deja subir cambios se pone
+
+toca copiar el archivo que se modifica a la carpeta leonardo
+git fetch revnodos.sh nodos.py
+git reset --soft origin/master
+git add revnodos.sh nodos.py
+git commit -am "version 2.0"
+git push origin master
+
