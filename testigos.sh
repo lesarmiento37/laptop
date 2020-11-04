@@ -43,6 +43,7 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMWNKOxdlc:;;;;;;;;:cloxOKNWWMMMMMMMMMMMMMMMMMMMMMMMMMMM
 sleep 2;
 
 rm /home/dionis/1*
+rm testftp.txt
 
 nmap 192.168.19.60 -PN -p ssh | egrep 'open'
 	if [ $? -eq 0 ]
@@ -332,14 +333,18 @@ nmap 192.168.35.63 -PN -p ssh | egrep 'open'
            echo "   voltage: 0V " >> /home/dionis/192.168.35.63.txt
         fi
 
-javac testvol/testvol.java
-java testvol.testvol
+javac testvol/testvol.java 
+java testvol.testvol 
 
 javac testvol/testvol2.java
 java  testvol.testvol2
 
 javac testvol/testvol3.java
 java  testvol.testvol3
+
+javac testvol/testvol4.java
+java  testvol.testvol4 >> testftp.txt
+
 
 python testigosp.py
 #expect ftp.sh
