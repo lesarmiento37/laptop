@@ -1,0 +1,557 @@
+docker run hello-world
+1 comprueba si tiene la plantilla en local, como no la va a encontrar, entonces se va a dockerhub
+que es donde docker donde tiene subidas un monton de plantillas.
+
+Se va a descargar un contenedor y luego lo ejecuta y finalmente lo para
+
+docker ps -a: muestra todos los docker que se han creado 
+docker ps -l muestra el ultimo docker creado
+docker ps -n 4: muestra los ultimos 4 contenedores
+docker ps --help: muestra las opciones
+docker ps -aq muestra las id de las imagenes
+docker ps -s muestra el espacio que ocupan los contenedores
+docker ps -f filtra la informacion esta en docker docs
+
+docker run -it ubuntu : de forma interactiva si el contenedor lo permite y que imprima las cosas en consola
+
+docker run -d nginx: para correr un contenedor en background
+
+documentacion de imagenes para windows:
+https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-base-images
+
+Si uno quiere borrar a las malas una imagen se pone
+docker rmi (id de imagen) a veces toca borrar primero el contenedor
+docker rmi -f (id de imagen)
+
+====docker exec================
+Permite mandar una orden a un contenedor en específico
+docker run -it --name leonis ubuntu bash: entra al bash del contenedor
+Es muy util para contenedores que funcionen en background
+docker exec leonis echo hola mundo : realiza una tarea dentro de ese contenedor.
+
+
+Cuando pongo docker pull se descarga la imagen al repositorio local pero no ejecuta ninguna acción
+Cuando pongo docker run baja la imagen, crea el contenedor y lo arranca.
+
+Para editar un contenedor mientras está funcionando, poner en otro terminal
+docker exec -it py_leonis bash
+
+Se puede lanzar un script a través del shell correspondiente pasando el script:
+docker exec nginxl /bin/sh -c 'for i in *;do echo "carolain -->" $i; done'
+
+Se puede ingresar a un contenedor de forma interactiva si es necesario:
+docker exec -it nginxl bash
+
+=========== comandos container, image, ayuda a diferenciar las opciones con contenedores e imagenes
+docker image (command) gestiona imagenes
+docker container command gestiona contenedores
+
+docker container ls -a = docker ps -a
+docker container ls --help : para mirar las opciones del comando
+
+===================docker logs y docker kill========================
+docker logs me permite preguntar al contenedor que esta sacando en pantalla en ese momento
+docker logs (id) -f mustra los ultimos comandos
+docker kill (id o nombre) : termina el proceso de forma fortuita 
+==========docker top=================
+docker top (id) permite averiguar el proceso que mas esta consumiendo dentro del container
+docker stats (id) permite ver el consumo de cpu
+
+===========correr un contenedor ya existente en background=========
+docker run -d --name nginx nginx
+
+===comando inspect==============================
+nos permite recuperar informacion sobre un contenedor o imagen a nivel de sus caracteristicas
+
+=========== Unidad redes===========================
+Los puertos en docker para acceder a determinadas aplicaciones son privados, no pueden ser accedidos publicamente
+desde afuera. Se deben hacer publicos y deben ser mapeados con un puerto de host
+
+docker run -d -P nginx : para correr nginx
+docker run -d --name nginx2 -p 8080:80 nginx
+
+Por un lado -P si queremos que docker se encargue del mapeo de puertos
+y -p con el mapeo de puertos para indicarle al programa
+============= docker network================
+Nos da informacion sobre las redes que tenemos asociados a docker y objetos
+los conetenedores por defecto estan en modo bridge
+A todos los contenedores que se ejecutan se les da una ip
+docker inspect nginx2 | grep IPAddress
+
+docker network inspect bridge > archivo.txt : esto genera la informacion de redes del container
+se puede mirar el puerto al que funciona un contenedor como:
+docker port mongo2
+===========creacion de redes docker===========================
+Sale mejor crear una red pesonalizada
+la red bridge por defecto tiene ciertas limitaciones como que para enlazar contenedores toca 
+usar opciones link
+
+si se crea una red nuestra los contenedores exponen todos sus puertos
+docker network create --help  se puede ver configuraciones de creacion de red.
+docker network create red1
+
+Para crear una red:
+docker network create --subnet=192.168.0.0/16 red2
+
+Para asociar un contenedor a una determinada red
+docker run -d --name nginx4 --network red1 nginx
+
+Para conectar un contenedor existente a otra red
+docker network connect red1 leonis
+
+Para desconectar un contenedor existente de una red
+docker network disconnect red1 leonis
+enlaces con contenedores --link
+
+docker ps -q  :  saca las id de los contenedores
+para borrar todos docker rm 'docker ps -q'
+
+busybox : permite poner aplicaciones encima, the swiss army, permite probar si mi entorno funciona correctamente
+
+Para crear y luego borrar un contenedor poner
+docker run -it --rm --name b1 busybox
+
+=================crear links entre hostnames======================
+docker run -it --rm --name b3 --link b1:maquina1 busybox
+maquina1 es un alias
+Cuando se usa la red bridge predefinida toca configurar un link para que reconozca
+el hostname con el que se quiere enlazar
+
+Vamos en primer lugar a arrancar el contenedor Postgresql y crear la
+Base de datos. Le tenemos que indicar un nombre y luego una variable
+de entorno para la password, en este caso he puesto “secret”
+
+docker run -d --name postgresql1 -e POSTGRES_PASSWORD=secret postgres
+
+Se pueden crear contenedores con variables de entorno con -e
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+Se puede montar un servidor wordpress se puede con un contenedor wordpress y uno mysql
+ponerlos en la misma red preferiblemente creada manualmente para no tener que hacer 
+links
+===== modulo Volumenes ====================
+Son el mecanismo que se utiliza dentro de docker para persistir la informacion.
+Docker comparte recursos datos, recursos dentro del host
+Son faciles de migrar, de hacer backup, funcionan en windows o linux
+Se pueden compartir entre varios contenedores, se pueden almacenar en entornos cloud
+Los contenidos de un nuevo volumen pueden ser rellenados de forma previa por un contenedor
+
+Los volumenes parten de que se tiene un filesystem, la idea es crear un directorio
+llamado /datos, en vez de tener esto dentro del contenedor, se tiene fuera en un directorio
+pero puede ser gestionado de forma externa, los volumenes pueden ser almacenados persistentemente 
+para el contenedor.
+se comparte el almacenamiento entre distintos contenedores.
+
+La forma mas basica de crear un volumen es creando un contenedor interactivo
+
+para crear un volumen
+
+docker run -it -v /datos --name ubuntu1 ubuntu bash : dentro del contenedor se creara un fichero /datos que 
+creara un volumen. lo deja en /var/lib/docker/volumes
+
+Para mirar los archivos /data de un contenedor se pone en el servidor docker
+ls -l /var/lib/docker/volumes/(id del contendor)/_data
+
+Para arrancar un contenedor ya creado
+doker start -i ubuntu1
+
+docker volume: deja ver la informacion de volumenes o se permiten crear
+docker volume inspect : deja ver toda la info necesitada por ese volumen
+
+docker volume prune : borra todos los volumenes que no se usan
+
+=====================Crear directorios compartidos con el host==================
+docker run -it -v /home/leonardo/dir1:/dir1 --name ubuntu3 ubuntu
+El directorio /root/dir1 del host se comparte con el /dir1 del contenedor
+
+Para crerar un volumen de un contenedor que pueda ser usado por otros
+docker run -it -v /datos --name ubuntu4 ubuntu bash 
+docker run -it --name ubuntu5 --volumes-from ubuntu4 ubuntu bash 
+
+De esta forma el contenedor ubuntu4 se convierte en servidor de volumenes para 
+los contenedores que se asocien a este.
+
+Para cargar una web prediseñada compartiendo directorios con el host se pone
+docker run -d --name apache1 -p 1110:80 -v /home/leonardo/dir1:/usr/local/apache2/htdocs/ httpd
+
+Para crear un volumen con un nombre especifico 
+docker volume create vol1
+Para mirar lo que tiene un volumen 
+docker volume inspect (name)
+Para ubicar el volumen con nombre y ubicacion
+docker run -it --name ubuntu7 -v vol1:/dir1 ubuntu bash
+El volumen vol1 se almacenara en /dir1
+
+docker run -it --name ubuntu8 -v vol1:/datos:ro
+Para montar una carpeta diferente en el mismo directorio en read only
+
+Borrar volumenes
+docker volume rm (id)
+
+==============Introduccion a imagenes=========================
+Una imagen en docker es una serie de capas de tipo read only que se forman unas sobre otras
+una imagen tiene unos ficheros de arranque bootfs, luego un sistema de ficheros 
+luego las imagenes para finalmente formar el contenedor
+
+docker diff (id) : muestra los cambios que ha tenido ese contenedor con respecto
+a la imagen original
+
+Una vez se modifica el contenedor se procede a construir una imagen sobre el contenedor modificado
+docker commit ubuntu1 mi_ubuntu:latest
+
+Construir imagenes de forma automatica
+
+dockerfile
+
+FROM es la imagen padre de donde viene; La excepcion es scratch permite crear comandos sin que tenga un sistema
+
+FROM ubuntu -> le estoy diciendo que me cargue la imagen inicial 
+RUN apt-get update -> un comando que quiero ejecutar
+RUN apt-get install -y python -> ejecuta la instlación de python de forma no interactiva
+
+docker build -t imagen_python .
+docker build -t (directorio imagen) . -> el punto significa que pondra los archivos necesarios para la ejecucion
+
+docker image history (nombre imagen) -> los cambios por los que ha pasado esa imagen
+
+El comando run ademas de poder poner un comando por linea se puede poner procurando de que se ejecute en la misma capa
+RUN echo 1.0 >> /etc/version && apt-get install -y git \ && apt-get install -y iputils-ping
+
+docker build -t dir:v1 .
+Para ponerle versiones cuando se compila
+
+=================comando cmd=====================================
+Es una directiva que nos permite ubicar el comando por defecto del contendor
+dentro de un dockerfile solo puede haber un comando solo lee el ultimo
+
+desde un mismo dockerfile se pueden crear varias imagenes distintas
+
+Hay otra opcion del CMD que es poner corchetes, permite ejecutar el contenedor 
+en vez de como bash como exec, como el hello-world
+
+La recomendacion es usar los corchetes []
+
+Entrypoint es una directiva que al igual que cmd lo que hace es ejecutar 
+algo cuando arrancamos el contenedor, la diferencia con el cmd es que el 
+entrypoint nos permite blindar este comando, 
+
+Con entrypoint queda el comando fijo, mientras que con cmd se sale
+por ejemplo /bin/bash ls en cmd se sale una vez lo ejecuta, mientras con entrypoint
+se queda en el bash
+
+docker run -it --rm image:v2 : con cmd añade comandos adicionales como ls al comando
+como opciones o algo asi
+
+entrypoint solo admite el comando configurado y solo admite el ultimo comando
+
+Directiva workdir
+Nos permite determinar el directorio de trabajo para determinadas directivas
+como run entrypoint copy 
+
+Se queda en el ultimo directorio puesto
+
+Dockerfile copy-add
+
+copian contenido de la maquina host al contenedor
+
+diferencias de copy con add es que el add permite copiar archivos .tar metiendolos dentro
+de un tar y luego docker lo desempaqueta
+add permite traer una url
+
+===============variables docker=====================
+crea variables dentro de un contenedor
+docker run -it --rm --env x=10 imagen:v5
+
+============== arg====================
+Arg es para crear la imagen 
+Env es para trabajar con el contenedor
+docker build -t imagen:v6 --build-arg dir2=/data2 --build-arg user=leonis .
+
+============expose=============================
+expose permite exponer puertos en la imagen va un puerto que sera publicado publicamente
+los comandos que significa cambiar de estado con otro funciona no funcionan con el root
+si quiero crear cosas despues de arrancar al contenedor es mejor hacerlo por cmd
+
+PARA ARRANCAR UN CONTENEDOR PARA PROBARLO SE PONE:
+docker exec -it postgres2 bash
+
+===============DOCKER HUB ======================
+docker login : me permite logearme dentro de la cuenta de dockerhub para hacer push and pull de imagenes
+docker login 
+leonardos37
+7TvndmamvT
+
+para subir
+docker push 
+docker image tag imagen:v7 leonardos37/imagen:v7 -> subir con nombre de usuario
+para que la identifique como la ultima
+docker image tag image:v7 leonardos37/imagen:latest
+
+============= GIT HUB ===================
+user lesarmiento37
+pass 7TvndmamvT
+
+echo "# dir3" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/lesarmiento37/dir3.git
+git push -u origin master
+
+==============DOCKER COMPOSE==========================
+Docker permite microservicios 
+Permite convertir una aplicacion monolitica tradicional, una base de datos un servidor web etc
+tenemos distintos contenedores que ofrecen distintas funcionalidades para un proyecto
+Pero administrar manualmente todos esos contenedores puede llegar a ser problematico
+Docker compose es un producto que orquesta servicios o componentes de contenedores 
+Docker compose permite gestionar este tipo de arquitecturas de una forma mas simple
+mean es un entorno de desarrollo que esta formado por angular node.js y mongodb
+docker compose yaml 
+stack de tipo mean 
+docker compose en linux no viene instalado por defecto
+
+un ejecutable generado de docker compose esta en /usr/local/bin/docker-compose
+
+docker compose es un frontal de contenedores pero llama a docker
+
+docker-compose.yml es como el dockerfile pero para docker compose
+
+pseudolenguaje YAML es un lenguaje de marcado que se utiliza para entornos como 
+
+En docker se utilizara un lenguaje de marcar predefinido que permite confirgurar las 
+caracteristicas de nuestro entorno
+
+La version es el numero de version del fichero de docker compose
+
+Documentacion reference file formats compose file reference
+
+Docker compose entiende los contenedores que se van a utilizar como servicios.
+
+Compose esta orientado a crear microservicios, apache, base de datos, etc.
+
+services: servicios que tendra el fichero
+
+toca identar el codigo importante, cada servicio es un contenedor basado en una imagen
+
+redis base de datos de tipo columnar. 
+
+todo servicio debe tener contacto build o image, 
+
+el comando build permite construir la imagen a traves de un dockerfile, separado del directorio donde encuentra el dockerfile
+
+mientras el comando image trabaja sobre una imagen en especifico
+
+ports: "5000:5000" es puerto del host mapeado con el puerto del contenedor
+
+volumes: volumenes definidos.
+
+links: enlace con otros contenedores, --link o red especifica a otros contenedores
+
+Nombre de identificacion
+
+==============Mi primer poyecto compose================
+para lanzar el archivo yml
+
+docker-compose up 
+
+en dockercompose se pueden poner variables environment
+
+depends_on: Con esta opcion le decimos a docker compose como deberia arrancar los contendores
+para que un servicio funcione tiene que estar otro encendido
+
+=====================puertos repetidos=========================
+Para arreglar lo de los puertos repetidos
+poner 
+netstat -nlp | grep puerto
+kill pid
+=================comandos docker compose=======================
+docker-compose ps : informacion parecida a la que nos daba docker ps
+docker-compose images : informacion de las imagenes
+
+Docker compose config
+docker-compose config :permite averiguar si nuestro fichero docker-compose es correcto
+docker-compose config -q :permite saber que errores tiene si los hay
+docker-compose config --services permite ver los servicios del fichero
+docker-compose logs idservicio : permite ver los logs del servicio especifico
+docker-compose top idservicio permite ver el procesamiento de procesos
+docker-compose pause : para temporalmente los contenedores
+
+en el archivo docker-compose.yml
+
+Para los volumenes:
+clausula type si es de tipo volume o tipo bind la diferencia es que los volumenes 
+creados en /var/lib/docker mientras que el bind asociaba un directorio de la maquina principal ocn otro directorio 
+
+source directorio local
+target directorio en el contenedor
+
+docker-compose down borra los servicios volumenes contenedores etc 
+
+=====================redes en docker compose ============================
+container_name en el docker compose es para ponerle nombre
+networks:
+ net3: ---------red
+   driver: bridge
+   ipam:  ------- configurar subredes 
+     driver: default
+     config:
+     -
+       subnet: 172.16.238.0/24
+     -
+       subnet: 2001:3984:3989::/64 
+
+docker-compose  opcion -f permite que se le pueda cambiar el nombre al fichero de docker compose
+docker-compose opcion -p permite asignar un directorio para compilar un docker compose especifico
+
+docker-compose -f minombre.yml -p pr1 up -d
+
+==================Docker registry=====================================
+Para limitar el docker a solo ambitos empresariales dejar las imagenes y repositorios en una red privada
+
+docker pull registry
+
+Se crea un contenedor basado en registry para poder crear un registro
+se pueden tener tantos registros como contenedores que podemos crear
+
+docker run -d -p 5000:5000 --name registro1 registry
+
+Como se subem las imagenes
+
+Antes de poder subir una imagen toda etiquetarla
+
+docker tag ubuntu localhost:5000/mi-ubuntu
+
+docker push localhost:5000/mi-ubuntu
+
+para etiquetar la imagen toca anteceder esa imagen con el nombre de la maquina y puerto
+
+Para comprobar donde guarda ls imagenes en el registry, o guardarlo en un registro a voluntad
+
+mirar con inspect
+
+docker run -d --name repo1 -p 5000:5000 -v /directorio:var/lib/directoriocont registry
+
+================Docker Swarm==================================================
+Es trabajar con docker a nivel de cluster
+
+Docker Swarm utiliza el concepto de servicio, se despliegan de forma replicada a lo largo de los nodos cluster
+
+Manager son los coordinadores o gestores del cluster, se encargan de repartir las tareas y de gestionar que el cluster funcione correctamente
+se pueden tener uno o varios manager
+
+Los manager se comunican entre si y tienen el estado del cluster.
+
+worker es un nodo que se va a encargar del trabajo, donde se va a desplegar el contenedor a paritr de una imagen y donde se van a ejecutar estos servicios.
+
+cada nodo es una maquina fisica o virtual y cada una sera un nodo 
+
+Los servicios es componente que creo para realizar determinadas tareas
+
+docker swarm  : nos permite realizar la gestion del cluster
+
+docker service : nos permite crear esos servicios que pondremos dentro del cluster
+
+docker swarm init : crea un cluster 
+
+docker swarm leave --force para abandonar un cluster
+
+docker swarm init --advertise-addr  la ip 
+
+en este caso genero este tocken
+
+docker swarm join --token SWMTKN-1-1fbjls3eidmtb5rptcwkwhmoptzf2r8celav4qneh9kzy2ea8h-8pcnn7mt0hnxgjhx3uxjj274e 192.168.88.100:2377
+
+docker info para mirar las componentes del docker
+
+docker swarm join --token : desde el nodo lider para que se sepa el token para acceder a este
+
+docker node : permite ver los nodos dentro del master, inspeccionarlos etc
+
+docker node ls : muestra la lista
+
+docker node inspect --pretty nodox
+
+docker node promote manager id de nodo, como en hsrp en redes
+docker node demote id de nodo  , para que el leader renuncie a su rol
+el docker node ls solo sirve en el que este siendo el leader
+
+========trabajar con servicios=================================
+docker service para trabajar con servicios
+
+docker service create --replicas 3 --name servicio 1 alpine ping docker.com    
+ numero de veces que ese servicio se va a lanzar 
+
+docker service logs id de servicio 
+muestra lo que hizo durante la ejecucion del servicio
+
+=========Para escalar un servicio
+
+escalar un servicio es replicar o repetir un servicio 
+
+Puedo replicar un servicio muchas veces donde la limitante son los recursos de la maquina
+
+docker service scale : nos permite indicar en un servicio cuantas tareas va a ejecutar
+
+=========borrar un servicio
+
+docker service scale serv1=3 => baja las replicas
+docker service rm serv1 -- para borrar el servicio
+
+===================Kubernetes=========================================
+Es un orquestardor de contenedores trabaja con docker pero tambien con otros productos y entornos.
+La arquitectura difiere bastante de docker.
+Su funcioanlidad no es solo proveer contenedores sino funcionalidades orientada a cluster.
+Se tienen nodos de tipo worker que trabajaran de manera colaborativa con un nodo maestro
+
+El cliente accede al maestro, el maestro tiene scheduler, es un planificador de trabajo de los
+nodos esclavos, para saber cuando y como mandarle las cosas, planificando el cuando  un
+nodo tiene planificado un trabajo
+
+Maestro:
+
+El controller manager es un proceso que trbaja de manera enbuclada y comprueba el estado del cluster kubernetes
+
+API SERVER son las tareas de tipo administracion que se haran dentro del cluster, va a recibir llamadas rest por parte del cliente, se validara la validez del proceso
+
+ETCD almacen de tipo clave valor, es mantener el estado del cluster dentro de esta bae de datos, puede ser interno
+o externo
+
+Nodo: 
+
+El container runtime: Kubernetes admite distintos tipos de contenedores, El contenedor que utiliza docker no es el unico que utiliza kubernetes.
+
+Container runtime contiene elementos denominados pod
+
+Pod la unidad minima de trabajo con el que trabajar dentro de un container runtime
+
+Conexion de uno o mas contianer trabajando de manera coordinada
+
+kubelet: Agente que se ejecuta en cada nodo de trabajo y que se comunica con el maestro.
+Es el interprete entre maestro y esclavo.
+
+Kube proxy es una especie de proxy que sirve para trabajar con los pod.
+
+==============Conceptos de instalación Kubernetes=======================
+minikube desarrollo testing etc
+
+plataformas para probar herramientas de software --> katacoda
+docker playground
+
+==============minikube=======================
+-- kubectl herramienta basica de kubernet, nos permite trabajar con cluster
+
+-- virtualbox o kvm  para hacer pruebas
+
+-- Windows Hyper-V
+
+Activado el entorno de virtualizacion 
+
+Instalar kubectl
+
+
+para borrar todo lo inutil
+
+docker system prune
+
+
+

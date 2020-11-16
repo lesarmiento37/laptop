@@ -1,0 +1,1011 @@
+para acceder a python también se puede por jupyter.org
+
+=== variables========
+No pueden empezar por un número solo por letra o guion bajo
+Son sensibles a mayusculas
+
+Se pueden concatenar
+cadena1 = "hola "
+cadena2 = "mamacita"
+cadenanueva = cadena1 + cadena2
+
+print("lolo" * 32) = lolololololo -> se multiplica lolo por 32 veces
+
+si quieremos saber que tipo es una variable
+
+Conversiones de tipos de datos
+numero = 5   ---> es int
+cadena = str(numero)  ---> transforma de int a string
+
+Tambien se puede al reves 
+
+cadena = '25'
+numero = int(cadena)
+O si se quiere convertir:
+numero = float(cadena)
+
+En cadenas de caracteres 
+
+# h o l a
+cadena[2] sera l
+
+cadena[-1] sera [a]
+
+se puede redondear al menos poniendo
+
+10//3
+
+===================Funciones de cadena==================
+len(variable)    -> muestra el numero de elementos de la cadena
+variable.upper()  -> pone toda la cadena en mayusculas
+cadena.split()   -> convierte un string a un arreglo de string segun tabulador
+cadena.split(',')  -> separa una cadena segun simbolo de tabulador
+
+===========Imprimir variables en cadenas ======================
+nombre = "Antonio"
+print ("Buenos días " + Antonio)
+Para poner variables dentro de textos
+print("La mamacita de {}, cumplió {} añitos".format(nombre,edad))
+La mamacita de Ruby, cumplió 21 añitos
+
+resultado = 10 / 3 
+print("El resultado es: {r}".format(r=resultado)
+
+para mostrar un numero de decimales
+print("El resultado es: {r:1.3f}".format(r=result))
+
+tambien funciona:
+print(f"Feliz mesesario {edad}, {nombre} mamasota})
+
+Entradas por teclado
+input()
+
+=================Operadores de asignación=============================
+= += -= /= *=
+numero = numero + 4   ->  numero += 4
+numero = numero - 3   ->  numero -= 3
+numero = numero * 3   ->  numero *= 3
+numero = numero / 3   ->  numero /= 3
+numero = numero ** 3    ->  numero **= 3
+
+==============Operadores de comparación==============================
+== != < > <= >=
+numero1 = 5
+numero2 = 2
+numero1 == numero2 -> devuelve true o false
+
+===============Operadores logicos ==================
+and or not
+numero1 = 10 
+numero1 = 5
+numero1 = 60
+numero1 = 4
+
+(numero1 > numero2) and (numero3 < numero4)
+
+==============Operadores de identidad ================================
+intenta identificar si dos objetos son el mismo objeto o dos distintos objetos
+is  is not
+frutas = ["manzana","pera"]
+frutas = ["manzana","pera"]
+frutas3 is frutas1 -> copia la variable
+frutas3.append("naranja")
+
+=============Operadores de pertenencia==============================
+in    not in
+permiten verificar si un valor esta adentro de una lista de valores
+frutas1 = ["manzana","pera","naranja"]
+frutas2 = "pera"
+frutas2 in frutas1  -> sera 1 
+
+================== Listas ========================
+colores = ["rojo","amarillo","verde"]
+colores.append("otra cosa")
+colores.remove("el elemento que quiera")
+para imprimir como println con arreglos:
+for color in colores
+print color
+si quiero borrar un arreglo:
+colores.clear
+
+===========Tuplas=========================
+Una tupla es una coleccion de elementos que no se puede modificar
+tupla_colores = ("rojo,"verde","amarillo")
+
+for color in tupla_colores:
+print(color)
+
+==========Conjuntos==================
+Un conjunto es una coleccion de elementos pero esta desordenado, no hay un indice
+conjunto_colores = ("rojo","verde","azul")
+
+======Diccionarios===========================
+Elementos estan indexados no estan ordenados y se pueden modificar
+diccionario_colores = {"red":"rojo" , "blue":"azul" , "yellow":"Amarillo"}
+diccionario_colores["red"] sale rojo por definicion
+para añadir
+diccionario_colores["negro"] = "negro"
+para quitar
+diccionario_colores.pop("yellow")
+del(diccionario_colores["black"])
+for color in diccionario_colores:  por cada color que haya en el diccionario muestreme el color
+print(color)
+si queremos mostrar tanto la clave como el valor
+
+for clave,valor in diccionario_colores.items():
+print(clave,valor)
+
+==============Ejercicio=========================
+lista = [1,2,5,25,33,56,75,21,56,89,43,13,62,24]
+numero = 21
+if (numero in lista):
+print("si")
+else:
+print("no")
+
+==============if==================================
+if elif else
+
+if (a > b):
+print("a es mayor a b")
+
+if (a > c) and (b < d):
+
+if (a < b):
+print
+elif (a==b):
+print
+else:
+print
+=================Bucle For=========================
+colores = {"rojo","verde","azul"}
+for numero in range(8):
+range(8) -> va dle 0 al 7
+in range(3,8,2) -> del 3 al ocho pero va de 2 en 2
+
+break -> parar el bucle
+
+for numero in range(10):
+   if (numero == 5):
+	break
+print(numero)
+
+continue -> para parar solo la iteración
+
+for numero in range(10):
+   if(numero == 6):
+   continue
+print(numero)
+
+===========While=======================
+valor = 1
+fin = 10
+while (valor < fin)
+     print(valor)
+     valor = valor + 1
+=============Metodos clases y objetos=====================
+Una clase es como un contenedor de objetos
+
+class ClaseSilla:
+	color = "blanco" -> atributo es blanco
+	precio = 100
+
+objetoSilla1 = ClaseSilla() es una instancia de la clase silla
+objetoSilla1.color  sale blanco
+
+objetoSilla2 = claseSilla()
+objetoSilla2.color = "verde"
+objetoSilla2.precio = 120 
+
+Se pueden crear varios objetos que pertenecen a una misma clase, pero con diferentes atributos
+
+class Persona:
+	def __init__(self,nombre,edad):  -> es un metodo
+	   self.nombre = nombre
+	   self.edad = edad
+
+	def saludar():
+	   print("Hola, me llamo {} y tengo {} años".format(self.nombre,self.edad)
+           
+se crea
+
+persona1 = Persona("juan",37)
+
+persona1.edad  = 37
+
+persona1.nombre = juan
+
+persona1.saludar()
+Hola, me llamo Juan y tengo 37 años
+
+===== Funciones ==========
+Es un bloque de codigo que se ejecuta cuando es llamado
+def saludar():
+	print("buenos días")
+
+saludar()
+
+Para pasarle parametros
+
+def saludar(nombre)
+	print("buenos días " + nombre)
+
+nombre = "Antonio"
+
+saludar(nombre)
+
+Para devolver un valor
+
+def sumar(numero1,numero2):
+	suma = numero1 + numero2
+	return
+
+numero1 = 5
+numero2 = 3
+resultado = sumar(numero1,numero2)
+
+resultado
+
+Valores como parametros
+
+colores = {"rojo","verde","azul"}
+
+def incluir_color(colores,color)
+	colores.append(color)
+
+color = "negro"
+incluir_color(colores,color)
+
+colores
+
+=======Funciones lambda============
+funcion pequeña y anonima
+
+resultado lambda numero : numero + 30
+resultado(10)
+
+resultado2 = lambda numero1, numero2 : numero1 + numero2
+resultado2(5,8)  -> 13
+
+===============MODULO=======================
+un modulo es un ficher que contiene un conjunto de funciones que pueden ser usadas en una funcion
+modulo.py
+
+el programa que llama al modulo se pone 
+
+def saludar(nombre):
+	print("hola soy:" + nombre)
+import (nombre del modulo.py)
+
+modulo1.saludar("antonio")
+
+si solo quiero importar un modulo y no todo el fichero completo
+from modulo import nombremetodo as adios -> el adios renombra la funcion despedirse como adios
+
+Pip gestor de paquetes y modulos para python
+
+si queremos ver que modulos estan instalados se pone 
+pip list
+
+si queremos instalar un nuevo modulo 
+pip install nombremodulo
+
+import camelcase -> convierte cada letra a mayusculas
+camel = camelcase.CamelCase() 
+
+texto = "mi nombre es leonardo"
+print(camel.hump(texto)) 
+
+Si quiero desinstalarlo
+
+pip camel unistall
+
+=============Fichero=================================
+Un fichero es una secuencia de pips que se almacena en un nombre
+
+=============Puntero python===================
+id() returns the object’s memory address.
+is returns True if and only if two objects have the same memory address.
+los strings no soportan mutaciones, como los int double y demas
+una lista si es mutable, se pueden añadir y quitar cosas
+
+======= python con linux =======================
+dentro de python se pueden ejecutar comandos del bash de linux asi:
+$ python>>>from os import *>>> system ( ‘sudo apt-get update’ )
+
+
+====== Probar comandos en python=================
+Try permite verificar si un bloque de codigo tiene errores 
+numero1 = 5
+numero2 = 0 
+division = numero1/numero2
+manda error por division 
+try:
+	numero1 = 5
+	numero2 = 0
+	division = numero1/numero2
+	print(division)
+except: -> si se produce el error:
+	se ejecutan estas lineas
+
+tambien se puede poner el tipo de error:
+except ZeroDivisionError:
+	se ejecutan estas lineas
+	
+else: en caso de que no haya ningun error
+	se ejecutan las siguientes lineas
+
+finally: permite ejecutar algun codigo independientemente del try y except
+	ejecuta estas lineas
+	print(esta prueba del try se ha acabado)
+
+===========Expresiones regulares===============================
+Una expresion regular es una secuencia de caracteres que forman una busqueda por background
+sirve para saber si una cadena de texto tiene el patron buscado
+/////////////////
+texto = "Carolain es una gordita mamacita rica"
+import re -> importa expresiones regulares
+re.search("Carolain",texto) -> permite buscar carolain dentro de la ariable texto
+si lo encuentra manda un objeto match 
+si no lo encuentra, no devuelve nada
+
+resultado = re.search("Carolain",texto)
+	if (resultado):
+	print("cadena encontrada")
+	else:
+	print("cadena no encontrada")
+
+en search tambien sirven los caracteres especiales
+re.search("Carolain$",texto) ->busca en la cadena texto si hay una frase que acabe en antonio 
+re.search("^Carolain",texto) -> busca si hay alguna linea que empiece por hola
+re.search("mi.*es",texto) -> cero o mas veces caracteres buscando mi y es
+///////////
+Findall busca todas las ocurrencias en una cadena
+texto = """
+El coche de luis es rojo,
+El coche de antonio es blanco
+el coche de maria es rojo
+""" se ponen 3 comillas para crear texto en varias lineas
+re.findall("coche.*rojo,texto) -> devuelve una lista con dos elementos
+///////////
+split divide una cadena a partir de un patron
+texto = "la silla es blanca y vale 80"
+re.split("\s",texto) -> divide el texto con espacios
+////////////////////
+sub sirve para sustituir coincidencias de una cadena
+texto = "la silla es blanca y vale 80"
+re.sub("blanca","roja",texto) sustituye blanca por roja
+////////////
+si quiero saber donde inicia un string se pone
+resultado.start()
+resultado.end()
+
+def buscar(palabra,texto):
+	resultado = re.search(palabra,texto)
+	return resultado
+
+=================JSON==============================
+Es una forma de almacenar e intercambiar datos que estan en formato texto
+COnvertir datos de un diccionario python a una estructura JSON
+
+producto1 = { "nombre":"silla", "color":"blanco", "precio":80}
+
+import json 
+estructura_json = json.dumps(producto1) --> nos devuelve una estructura json 
+no se pueden acceder a los elementos a menos que sea por pocision:
+estructura_json[0] = {
+
+Convertir una estructura json a un diccionario en python
+producto2 = json.loads(estructura_json) -> hace el proceso contrario
+
+==========fecha y hora ==============================
+from datetime import datetime
+fechayhora = datetime.now()
+print(fechayhora)
+año = fechayhora.year
+mes = fechayhora.month
+dia = fechayhora.day
+
+==============split variable de entrada mas facil=============
+d1,h1,m1,s1,d2,h2,m2,s2 = raw_input().split()
+        d1,h1,m1,s1,d2,h2,m2,s2 = int(d1),int(h1),int(m1),int(s1),int(d2),int(h2),int(m2),int(s2)
+
+==================Funcion print=================
+Uno puede definir el momento de imprimir que se hace con el fin de las lineas
+print("Hello", end="!#")
+print("World") -> imprimirán Hello!#World
+
+==========Bases de datos=======================
+SQL lite sistema de gestion de bases de datos relacionales que se usan desde python
+import sqlite3
+conecta una base de datos y si no existe la crea
+conexion = sqlite3.connect("basededatos1.db") 
+conexion.close() -> se cierra base de datosconecta una base de datos y si no existe la crea
+
+
+
+========interfaz gráfica modulo tkinter=================
+modulo tkinter tiene modulos llamados widget
+widget son componentes gráficos
+tk es el componente que contiene el resto de los componentes, es decir, el elemento raíz
+frame es un marco que puede contener otros widgets
+label
+entry 
+text 
+button
+
+componente raíz
+import tkinter
+
+raiz = tkinter.Tk()
+raiz.title("mi programa")
+raiz.mainloop()
+
+
+==================Documentacion automática ============================
+Docstrings : son cadenas para generar documentacion de nuestros programas en python
+def saludar(nombre):
+	"""
+	Esto sera un comentario de la funcion saludar.
+	esta funcion recibirá como parámetro una cadena con el nombre
+	e imprimirá por pantalla un saludo con el nombre concatenado
+	"""
+	print("buenos días " + nombre)
+
+saludar("Antonio")
+
+help(saludar) -> muestra ese texto que puse en el momentario entre comillas
+
+class Saludos:
+	"""
+	Esta clase tendrá dos funciones buenos_dias y Adios
+	Ambas funciones recibirán como parámetro un nombre
+	"""
+	def buenos_dias(self,nombre):
+		""" Esta funcion sirve para decir buenos días a una persona"""
+		print("buenos días {}".format(nombre))
+	def Adios(self,nombre):
+		""" Esta funcion dice adios a una persona"""
+		print("Adios {}" + nombre)
+
+Generar documentacion desde la consola o terminal de comandos
+pydoc (ruta del fichero) -> para verlo en consola
+pydoc -w (ruta del fichero) -> genera una pagina web con la documentacion
+		
+==============Doctest=====================
+genera pruebas dentro de la docuemntacion
+
+def sumar(numero1,numero2):
+	""" se pone la explicacion 
+	>>> sumar(4,3) 
+	7
+	"""
+	return numero1 + numero2
+
+resultado = sumar(2,4)
+print(resultado)
+
+import doctest---> realiza las pruebas que se pongan en la documentacion
+doctest.testmod()
+
+se prueba con 
+sumar.py -v
+
+===========unitest========================
+sirve para crear pruebas dentro del propio codigo
+
+def multiplicar(numero1,numero2)
+	return numero1 * numero2
+
+resultado multiplicar(2,4)
+print(resultado)
+
+import unittest
+
+class pruebas(unittest.Testcase):
+	def test(self):
+		self.assertEqual(multiplicar(2,4),8)
+
+if __name__ == '__main__':
+	unittest.main()
+=========Funciones generadoras=============
+Es aquella que genera valores sobre la marcha
+range(0,11) 
+
+def pares(maximo):
+	for numero in range(maximo):
+		if (numero %2 == 0):
+			yield numero  -> solo imprime los que dan la condicion
+
+maximo = 11
+
+for numero in pares(maximo):
+	print(numero)
+
+=============Filter===================
+Es una funcion para filtrar resultados a traves de una lista y una condicion
+def positivo(numero):
+	if (numero > 0):
+		return True
+	else:
+		return False
+
+positivo(5)  = True
+numeros = [4,-2,8,-3,,-5,-7,1,9]
+filtro = filter(positivo, numeros)
+resultado = list(filtro)	
+
+============Map=======================
+una funcion map sirve para filtrar una funcion a cada uno de los elementos de una lista
+
+def multiplicar(numero):
+	return numero * 2
+
+numeros = [2,4,6]
+
+mapeo = map(multiplicar, numeros)
+resultado = list(mapeo)
+print(resultado) [4,8,12]
+
+lista_resultado = list(map(lambda numero : numero*2,numeros))
+
+========= Arrays numpy ======================
+import numpy as np
+np.zeros(4) crea un arreglo de 4 ceros
+np.ones(5) crea un arreglo de 5 unos
+np.arrange(5) crea un arreglo de 0 a 4 como la funcion range
+np arrange(2,20,3) crea un arreglo que empieza en 2 y va hasta 20 de 3 en 3
+np.array(lista) transforma una lista a un array
+array_doble = (lista1,lista2)
+lista_doble = np.array(lista1,lista2)
+array_doble = np.array(lista_doble) -> crea una matriz con las listas
+array_doble.shape -> dice las filas y columnsa
+tambien se puede ver el tipo de dato
+array_doble.dtype
+
+////////Operaciones //////////////
+import numpy as np
+array1 = np.array([1,2,3,4])
+array1*2 se multipñlican todos los valores por 2
+
+//////Indexacion/////
+import numpy as np
+array = np.arange(0,11)
+array[0:3] del primer elemento al tercero
+array[:]
+array_copia = array.copy()  -> copia el array 
+array2 = np.array(([1,2,3],[4,5,6],(7,8,9]) -> se crea matriz
+array[2][3] seria el 8
+
+/////////Matriz transpuesta///////////////////
+cambiar ordenadamente las filas por las columnas
+import numpy as np
+array = np.arange(15).reshape((3,5)) -> se crea un elemento de 15 elementos y la forma que va a tener es de 3 filas por 5 columnas
+array_tras = array.T
+cambia filas por columnas
+
+////////////entrada y salida de arrays /////////////////
+aray1 = np.arange(6)
+se puede salvar el array para luego poner recuperarlo
+np.save('array1s',array1)
+np.load('array1s.npy')
+si quiero salvar dos array a la vez
+np.savez('arrays',x=array1,y=array2)
+array_recuperado = np.load('arrays.npz')
+array_recuperado['x'] sale el primer valor
+se puede guardar dentro de un fichero de texto
+np.savetxt('mificheroarray.txt',array2,array2,delimiter=',')
+np.loadtxt('mificheroarray.txt',delimiter=',')
+
+import numpy as np
+array = np.arange(5)
+np.sqrt(array) -> devuelve la raiz cuadrada de los elementos
+np.random.rand(5) -> devuelve 5 numeros aleatorios
+np.add(array1,array2) -> devuelve suma de los dos arrays
+np.maximum(array,array2) -> devuelve el maximo entre los dos array elemento a elemento
+
+========PANDAS==================
+Modulo para series
+import pandas as pd
+serie1 = pd.Series([3,5,7])
+una lista de valores indexada
+0 3
+1 5
+2 7
+serie1[1] = 5
+
+asignaturas = ['matematicas','historia','fisica','literatura']
+notas = [8,6,9,7]
+serie_notas_daniel = pd.series(notas,index=asignaturas)
+
+Serie_notas_daniel[serie_notas_daniel >=8]
+matematicas 8
+fisica 9
+
+serie_notas_daniel.name = 'Notas de Daniel'
+serie_notas_daniel.index.name = 'Asignaturas de daniel'
+
+se puede convertir la serie en un diccionario:
+
+diccionario = serie_notas_daniel.to_dict()
+
+de diccionario a serie:
+serie = pd.Series(diccionario)
+
+las series se pueden sumar y hace roperaciones entre ellas:
+Serie_notas_daniel
+
+serie_notas_clase = (serie_notas_daniel + serie_notas_ana)/2
+
+////////Dataframes/////////////////////////////////
+import pandas as pd
+import webbrowser
+website = '' -> ruta de la web
+webbrowser.open(website) -> esto abre la página
+dataframe_nba = pd.read_clipboard() -> copia lo que hay en el portapapeles y lo vuelve dataframe
+dataframe_nba.columns -> lista de nombres de columnas
+dataframe_nba['Campeón del Oeste '] -> devuelve la primera columna index y columna
+dataframe_nba.loc[5]  -> devuelve los valores de la fila 5
+dataframe_nba.head[5] -> muestra los primeros 5 elementos del dataframe
+dataframe_nba.tail[5] -> muestra los 5 ultimos elementos del dataframe
+
+lista_asignaturas = ['matematicas','historia','fisica']
+lista_notas = [7,8,9]
+diccionario = {'Asignaturas': lista_asignaturas, 'Notas':lista_notas}
+dataframe_notas = pd.dataframe(diccionario)
+
+
+/////////Indices//////////////////////////////
+
+import pandas as pd
+
+lista_valores = [1,2,3]
+lista_indices = ['a','b','c']
+serie = pd.Series(lista_valores, index=lista_indices)
+serie.index -> devuelve los valores de los indices
+serie.index[0] -> devolvería a
+permite cambiar valores pero no los indices.
+
+para un dataframe:
+
+lista_valores = [[6,7,8],[8,7,5],[6,9,4]]
+lista_indices = ['matematicas','historia','fisica']
+lista_nombres = ['Antonio','Maria','Pedro']
+
+para crear un dataframe
+
+dataframe = pd.Dataframe(lista_valores, index=lista_indices, columns=Lista_nombres)
+datframe.index -> devuelve los indices del dataframe
+
+Eliminar elementos en series
+import pandas as pd
+import numpy as np
+
+np.arange(3)
+serie = pd.Series(np.arange(4),index=['a','b','c','d'])
+serie.drop('c') -> elimina una fila en una serie.
+lista_valores = np.arange(9).reshape(3,3)
+lista_valores = np.arange(9).reshape(3,3)
+
+lista_indices = [a,b,c]
+lista_columnas = ['c1','c2','c3']
+dataframe = pd.Dataframe(lista_valores, index=lista_indices, columns=lista_columnas)
+dataframe.drop('b')
+para eliminar columnas
+dataframe.drop('c2', axis=1)
+
+Seleccionar datos
+
+pandas as pd
+import numpy as np
+
+lista_valores = np.arange(3)
+lista_valores
+
+lista_indices = ['i1','i2','i3']
+serie = pd.Series(lista_valores, index=lista_indices)
+serie = serie*2
+
+formas de acceder a los elementos:
+
+serie[2]
+
+seleccionar un rango de valores
+
+serie[0:2]
+
+serie['i1':'i3']
+
+con condicion:
+serie[serie > 3]
+
+se puede cambiar valores 
+serie[serie > 3] = 6
+
+Seleccionar datos en dataframes
+import pandas as pd
+import numy as np
+
+lista_valores  = np.arange(25).reshape(5,5)
+lista_indices = ['i1','i2','i3','i4','i5']
+lista_columnas = ['c1,'c2'c3',c4',c5']
+dataframe = pd.Dataframes(lista_valores, index=lista_indices, columns=lista_columnas)
+dataframe['c2']	
+dataframe['c2']['i2']
+datafrme(['c3','c4']]
+datafrane['c2','c3',','c4']
+dataframe[dataframe['c2'] > 15]
+datafrane > 20 devuelve los valores con cierto y falso
+dataframe.loc['i3'] -> para seleccionar por indice
+
+Operaciones entre series y dataframes
+
+import pandas as pd
+import numpy as np
+
+serie1 = pd.Series([0,1,2], index=['a','b''c'])
+serie2 = pd.Series([3,4,5,6], index=['a','b','c','d'])
+serie1 + serie2 
+lista_valores = np.arange(4).reshape(2,2)
+lista_indices = list('ab')
+lista_indices queda separado	
+
+lista_columnas = list('12')
+dataframe = pd.DataFrame(lista_valores, index=lista_indices, columns=lista_columnas)
+dataframe
+lista_valores_2 = np.arange(9).reshape(3,3)
+lista_indices_2 = list('abc')
+lista_columnas_2 = list('123')
+
+dataframe2 = pd.DataFrame(lista_valores_2,index=lista_indices_2,columns=lista_columnas2)
+dataframe + dataframe2 suma los elementos que coinciden y los que no los deja nulos
+
+si quiero llenar los valores con ceros
+dataframe.add(dataframe2,fill_value=0)
+
+Ordenar y clasificar sweries
+
+import pandas as pd
+import numpy as pd
+range(4)
+serie.sort_index()
+serie.sort_values() -> ordena los valores por orden
+seerie.rank -> ordena el ranking con los valores que tiene del 1 a n
+
+Estadisticas en dataframes
+import pandas as pd
+import numpy as np
+
+array = np.array([[1,8,3],[5,6,7]])
+dataframe = pd.DataFrame(array, index=['a','b'], columns=[list('123')]
+dataframe.sum() -> suma por columnas
+
+dataframe.sum(axis=1)
+dataframe.min() -> devuelve el valor minumo de cada fila
+dataframe.max(axis=1) -> devuelce el valor maximo de cada columna
+dataframe.idxmin() -> valor minimo indice
+Por columnas:
+dataframe.describe() -> nos da una serie de valores estadistivos de un dataframe
+///////Valores nulos///////////////////
+lista_valores = ['1','2',np.nan,'4']
+serie = pd.Series(lista_valores, index=list(abdc')]
+serie.isnull() -> devuelve valores true y false 
+serie = serie.dropna() -> borra valores nulos
+dataframe.dropna() -> borra toda la fila con valores nulos
+dataframe.fillna(0) -> reemplaza valores nulos con ceros
+
+////jerarquia de indices/////////////////
+import pandas as pd
+import numpy as np
+
+lista_valores = np.random.rand(6)
+lista_indices =  [[1,1,1,2,2,2],['a','b','c','a','b','c']]
+series = pd.Series(lista_valores, index=lista_indices)
+indices de primer nivel y segundo nuvel
+
+al tener series con dos indices se puede aprovechar para crear dataframe
+dataframe = series.unstack() -> genera un dataframe los pone como indices dataframe
+tambien se puede hacer el proceso inverso:
+lista_valores = np.arange(16).reshape(4,4)
+lista_indices = list('1234')
+lista_columnas('abcd')
+dataframe2 = pd.DataFrame(lista_valores, index= lista_indices, columns=lista_columnas)
+serie2 = dataframe.stack()
+===============HTML con Python========================
+Tomar datos de una pagina y convertirlos en un dataframe
+import pandas as pd
+url = 'se pone la url'
+dataframe = pd.io.read_html(url)
+para renombrar la fila de descripciones (columns)
+se transforman en diccionario:
+dataframe_futbol.loc[0]
+diccionario = dict(dataframe_futbol.loc[0])
+dataframe_futbol = dataframe_futbol.rename(columns=dict(dataframe_futbol.loc[0]))
+luego se elimina la fila porque ya esta repetida
+dataframe_futbol = dataframe_futbol.drop()
+dataframe_futbol = dataframe_futbol.drop('Notas',axis=1)
+
+====================Excel python==============================
+import pandas as pd
+ficheroexcel = pd.ExcelFile('rutadelfichero') -> imporeta el fichero como dataframe
+dataframe = fichero_excel.parse('Hoja1') -> crea un dataframe con lo que haya en la hoja 1
+
+===============Tratamiento de datos ==============================
+Union de dataframes
+Para tomar la parte comun de los dos:
+import pandas as pd
+dataframe1 = pd.DataFrame({'c1':['1','2','3'}, 'clave':['a','b','c'])
+dataframe2 = pd.DataFrame({'c2':['4','5','6'}, 'clave':['c','b','e'])
+dataframe3 = pd.DataFrame.merge(dataframe1,dataframe2)
+Seria igual a
+dataframe3 = pd.DataFrame.merge(dataframe1,dataframe2, on='clave')
+si queremos que prevalezcan a pesar de que esten repetidos:
+dataframe4= pd.DataFrame.merge(dataframe1,dataframe2,on='clave',how='left')
+en left se alinea la que no existe a la derecha y en right a la izquierda
+con 'outer' pone todas las filas de los dos dataframes, y los valores que no encuentra los pone nulos
+
+=============Concatenacion de arrays, series y dataframes====================
+import pandas as pd
+import numpy as np
+
+array1 = np.arange(9).reshape(3,3)
+np.concatenate([array1,array1]) -> pone un arreglo sobre otro
+np.concatenate([array1,array1,axis=1) pone una matriz al lado de otra
+
+ concatena las series de forma vertical
+serie1 = pd.concat([serie1,serie2], keys['serie1','serie2']) 
+
+dataframe1 = pd.DataFrame(np.random.rand(3,3), columns=['a','b','c'])
+dataframe2 = pd.DataFrame(np.random.rand(2,3),columns=['a','b','c'])
+dataframe3 = pd.concat([dataframe1,dataframe2])
+
+Para reorganizar indices:
+
+dataframe4 = pd.concat([dataframe1,dataframe2], ignore_index=True)
+
+////////Combinar series y Dataframes ///////////////////////
+serie1 = pd.Series([1,2,np.nan])
+serie2 = pd.Series([4,5,6])
+serie3 = serie11.combine_first(serie2) -> en este caso reemplaza el nulo por 6
+
+lista_valores = [1,2,np,nan]
+dataframe1 = pd.Dataframe(lista_valores)
+lista_valores_2 = [4,5,6]
+dataframe_2 = pd.DataFrame(lista_valores_2)
+dataframe_3 = dataframe1.combine_first(dataframe_2)
+
+////////Eliminar Duplicados en un dataframe ////////////////////
+import pandas as pd 
+lista_valores = [[1,2],[1,2],[5,6],[5,8]]
+lista_indices = list('mnop')
+lista_columnas = ['valor1','valor2']
+dataframe = pd.DataFrame(lista_valores, index=lista_indices, columns= lista_columnas)
+Para eliminar valores duplicados usar:
+dataframe2 = dataframe.drop_Duplicates() -> elimina valores repetidos en filas
+dataframe3 = dataframe.drop_Duplicates(['valor1']) -> si cojo el primero
+dataframe3 = dataframe.drop_Duplicates(['valor1'],keep='last') -> para seleccionar el ultimo
+
+/////////Reemplazar datos en pandas///////////////////////
+import pandas as pd
+serie = pd.Series([1,2,3,4,5], index=list('abcde'))
+serie.replace(1,6) 
+para reemplazarlo definitivamente:
+serie = serie.replace(1,6)
+
+serie = serie.replace({2:8,3:9}) 
+
+///////Reemplazar indices/////////////////
+import pandas as pd
+import numpy as np
+
+lista_valores = np.arange(9).reshape(3,3)
+
+lista_indices = list('abc')
+
+dataframe = pd.Dataframe(lista_valores, index=lista_indices)
+nuevos_indices = dataframe.index.map(str.upper) _> se crean los nuevos indices
+dataframe.index = nuevos_indices -> se reemplazan los indices
+
+dataframae = dataframe.rename(index=str.lower) -> el metodo rename hace lo mismo
+
+nuevos_indices = {'a':'f', 'b':'g', 'c':'h'}
+
+dataframe.rename(index=nuevos_valores)
+
+dataframe = dataframe.rename(index= nuevos_indices)
+
+nuevos_indices = {'f':'j'}
+dataframe = dataframe.rename(index= nuevos_indices, inplace = True)
+
+///////Agrupar datos en categorías///////////////////
+import pandas as pd
+import numpy as np
+
+precios = [42,55,48,23,5,21,88,34,26]
+rango = [10,20,30,40,50,60,70,80,90,100]
+
+precios_con_rango = pd.cut(precios, rango)
+el 42 esta entre 40 y 50
+el 55 esta entre 50 y 60
+para cada precio en que caterogía está
+
+pd.value_counts(precios con rango) -> cuenta para todos los elementos cuantos hay en cada categoría
+
+///////Filtrar datos en dataframes/////////////////////////
+Como se seleccionan filas con determinado valor
+
+import pandas as pd
+import numpy as np
+
+lista_valores = np.random.rand(10,3)
+
+dataframe = pd.DataFrame(lista_valores)
+
+columna[0] = dataframe[0]
+columna[columna > 0.4]
+dataframe[dataframe > 0.4] 
+
+import pandas as pd
+import numpy as np
+
+lista_valores = np.arange(25).reshape(5,5)
+
+dataframe = pd.DataFrame(lista_valores)
+
+combinacion_aleatoria = np.random.permutation(5)
+
+dataframe.take(combinacion_aleatoria) -> ordena el dataframe segun la combinaicon aleatoria que haya generado
+
+//////////Agrupacion en Dataframes//////////////
+import pandas as pd
+import numpy as np
+
+lista_valores = {'clave1':['x','x','y','y','z'], 'clave2':['a','b','a','b','a'},
+	         'datos1':np.random.rand(5), 'datos2':np.random.rand()}
+
+dataframe = pd.Dataframe(lista_valores)
+
+Para ordenar datos1 mediante la columna clave1
+
+dataframe['datos1'].groupby(dataframe['clave1'])
+
+//////////////Agregación dataframes/////////////
+import pandas as pd
+import numpy as np
+
+lista_valores = [[1,2,3],[4,5,6],[7,8,9],[np.nan, np.nan, np.nan]]
+
+lista_columnas = list('abc')
+
+dataframe = pd.DataFrame(lista_valores, columns=lista_columnas)
+
+dataframe.agg(['sum','min']) suma y min de columnas
+
+dataframe.agg("sum",axis=1) suma de filas
+
+====================Seaborn visualizacion de datos=====================
+seaborn es una libreria o modulo python para hacer graficos estadisticos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

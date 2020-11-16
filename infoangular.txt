@@ -1,0 +1,14 @@
+Para instalar nodejs
+apt install npm
+
+Para crear nueva aplicacion angular:
+npm install -g @angular/cli
+
+para crear la nueva aplicacion
+ng new my-dream-app
+
+se cambia el directorio
+cd my-dream-ap
+
+se compila:
+ng serve

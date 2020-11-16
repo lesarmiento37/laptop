@@ -1,0 +1,384 @@
+=============CURSO LINUX==============
+tty identificador de terminal dinamico
+Un usuario puede para saber que terminales hay /etc/security
+
+cambiar contraseña
+passwd leonardo -> el usuario que esta conectado al sistema
+
+el echo ignora los espacios por ejemplo hola      mundo 
+para poner espacios echo "hola     mundo"
+
+Cambio de hora en servidores
+
+hwclock–set –date=”2013/06/13 16:02:15″
+
+Verificar archivo passwd para ver cuentas de usuario en servidor
+
+cat /etc/passwd
+
+Crear grupo en servidores y equipos
+
+groupadd (nombre del grupo)
+
+Ver log de errores del sistema
+
+dmesg
+
+Para ubicar la version del sistema operativo en linux:
+
+lsb_release –a 
+
+Muestra los datos del Kernell:
+
+uname – a 
+
+Muestra los datos de las aplicaciones instaladas:
+
+rpm -qa | grep (nombre de la aplicación)
+
+Para revisar version de  Linux:
+
+cat /etc/issue
+
+Revisar versión del sistema operativo Linux
+
+more /proc/version
+
+Ver capacidad de File Systems en servidores en GB
+
+df -h 
+
+Verificar usuarios que estuvieron conectados en Debian
+
+last
+
+Montar un pen drive como partición
+
+mount /dev/sdb1 /mnt/stickusb
+
+Validar instalaciones desde red hat
+
+rpm -qa |grep nombre del archivo
+
+Ubicar los archivos
+
+find / -name + NOMBREDELARCHIVO
+
+Modificar GRUB en servidor Debian 
+
+
+
+Vi /boot/grub/menu.lst
+
+Modificar todas las lineas con caracteres especiales, comentar o descomentar en vi.
+
+:%s/^linea/#nuevalinea/g
+
+Activar Virtual Host en apache
+
+a2ensite nombre virtualhost
+
+Desactivar Virtual Host Apache
+
+a2dissite  nombre virtualhost
+
+Reiniciar Servidor Apache
+
+service apache2 restart
+
+Reiniciar servidor
+
+reboot
+
+Apagar Servidor
+
+shutdown
+
+
+============== Manejo de lvm logical volume manager =============
+
+fstab /etc/fstab se guarda la información de los filesystems se gaurda el punto de mount 
+el tipo de filesystem, toda la estructura ahi montada
+
+lvextend nos ayudara a extender el logical volume
+
+vgdisplay  volume group display muestra una serie de informacion de volume group
+el volumen donde se encuentran los filesystems que se encuentran en el seervidor
+
+lvdisplay
+
+Es una forma de gestionar los discos de la computadora permitiendo agrupar discos fisicos en 
+grupos virtuales de disco para luego crear particiones que tienen la capacidad de variar su tamaño
+
+Sesiones confidenciales.
+
+Esquema de capas para resguardar la seguridad de la base de datos
+WEB APP y base de datos
+
+===APACHE=========
+Apache es un servidor web confiable. EL servidor Web es un repartidor virtual
+Nginx es otro software de servidores web muy popular
+Un servidor se encarga de procesar informacion, mediante conexiones unidireccionales
+p bidireccionales con el cliente
+Apache trabaja para realizar una conexion entre navegadores web con un servidor web 
+
+Apache es personalizable porque tiene una estructura dividida en modulos
+tiene autenticación, seguridad etc
+Se puede ajustar a configuraciones dentro del servidor a traves de .htaccess
+Cada aplicacion de servidor web esta creado para diferentes fines
+Apache funciona con otros servidores como drupal marcos web como laravel, 
+Hosting compartidos
+
+====== configuración de apache================
+netstat -plant | grep 80 para mirar que procesos estan asociados a ese puerto
+apache2.conf -> contiene directivas para diversas funciones de apache.
+usamos modulos de configuración de apache.
+mods-available encontramos todos los modulos disponibles para el apache.
+Apache nos indica si existe el modulo
+Cada vez que se modifica uno de los modulos toca reiniciar apache
+para saber la version de apache tenemos que ejecutar apache2 -version
+ports.conf muestra los puertos por defecto de apache
+80 -> aplicacaiones web
+443 -> conexiones seguras
+sites-available o sites-enabled 
+000-default.conf apache default-ssl.conf owncloud wordpess: Son virtual host
+Nos permiten conectarnos con nuestra pagina web, realizar diversias configuraciones.
+
+DocumentRoot /var/www/html -> la ruta de acceso a lo que va a ser la aplicacion dentro del servidor, es modificable totalmente.
+tambien se pueden hacer configuraciones de los logs, custom logs o access log, son log que se tienen dentro de apache
+access logs, nos permite verificar los accesos que tienen los aplicativos web,
+log errors, nos permite verificar los errores del aplicativo
+
+sites-enabvled sitios activos en nuestro servidor si no colocamos nuestra ruta o link simbolico no se va a activar el sitio
+activaciones dentro de aplicativos con apache==== a2ensite nombre-del-sitio si aparece error es porque no activamos el sitio de forma correcta
+para activar el sitio de forma manual, se realiza con un link simbolico
+link simbolico acceso a un fichero que se encuentra en otro sitio dentro de la lista de directorios de linux
+
+reiniciar:
+service apache2 restart
+
+==============Mysql=======================================
+mysql -u root -p  --> para que entre el password
+
+CREATE DATABASE wordpress; -> dentro de base de datos para crear una base de datos
+show databases; -> para ver las bases de datos generadas.
+crrar un nuevo usuario para base de datos wordpress:
+CREATE USER wordpressuser@localhost IDENTIFIED BY 'leonardo';
+Privilegios dE LEONARDO la base de datos:
+GRANT ALL PRIVILEGES ON wordpress.* TO wordpress@localhost IDENTIFIED BY 'leonardo';
+Luego 
+FLUSH PRIVILEGES; para darle privilegios para los cambios
+SELECT user FROM mysql.user;   -> muestra los usuarios creados
+Si queremos usar la base de datos wordpress:
+use wordpress; -> si vamos a realizar algun cambio dentro de una base de datos.
+show tables; -> para mirar las tablas dentro de wordpress.
+Creacion de tablas y comandos select e insert
+Columnas de la tabla,
+create table nombre (
+nombre text,
+apellido text); -> para crear dos columnas para una tabla.
+Select para ver dentro de la tabla
+select * from nombre;
+Insert sirve para meter datos a la tabla.
+insert into nombre (nombre,apellido) values ('Leonardo','Sarmiento');
+
+Dentro de los campos de las bases de datos se pueden ingresar varios tipos de valores numéricos
+TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT
+MySQL usa muchos tipos de datos diferentes divididos en tres categorías:
+
+    Numérico o NUMERIC
+
+    Fecha y hora o DATE AND TYPES
+
+    Cadenas o string types
+
+INT de -2147483648 a 2147483647
+TINYINT de -128 a 127
+SMALLINT  de -32768 a 32767
+MEDIUMINT de -8388608 a 8388607
+BIGINT de -9223372036854775808 a 9223372036854775807
+FLOTADOR (M, D)
+DOBLE (M, D)
+DECIMAL (M, D)
+FECHA 1000-01-01 y el 9999-12-31
+DATETIME 1000-01-01 00:00:00 y el 9999-12-31 23:59:59
+TIMESTAMP: una marca de tiempo entre la medianoche del 1 de enero de 1970 y en algún momento de 2037
+HORA HH: MM: SS.
+AÑO (M): 1970 y 2069 (70 a 69)
+
+
+CHAR (M): una cadena de longitud fija entre 1 y 255 caracteres de longitud (por ejemplo, CHAR (5)), rellena a la derecha con espacios en la longitud especificada cuando se almacena. No es necesario definir una longitud, pero el valor predeterminado es 1.
+VARCHAR (M): una cadena de longitud variable entre 1 y 255 caracteres de longitud. Por ejemplo, VARCHAR (25). Debe definir una longitud al crear un campo VARCHAR.
+TEXTO un campo con una longitud máxima de 65535 caracteres
+
+Creación de usuarios en mysql
+CREATE USER wordpressuser@localhost IDENTIFIED BY 'leonardo';
+
+Creación base de datos
+drop database if exists contactos; -> elimine una tabla llamada contactos si existe
+
+Cargar base de datos:
+source nombredelarchivo.sql
+
+la ruta donde se encuentran todos los archivos sql /var/lib/sql
+para salir \q
+
+Para ingresar a una base de datos especifica:
+use nombrebase;
+
+Un ejemplo de cómo cambiar el nombre de una tabla utilizando la tabla de Alter en MySQL
+
+ALTER TABLE phonebook RENAME TO contacts
+
+Cómo eliminar una columna en una tabla usando la tabla de Alter en MySQL
+
+ALTER TABLE contacts DROP COLUMN first_name;
+
+Un ejemplo de cómo seleccionar datos de una tabla MySQL
+
+SELECT * FROM phonebook ORDER BY lastname;
+
+Clausula Where OP value 
+Donde OP puede ser =,<,>,<=,!=
+AND && OR ||
+NOT
+WHERE colname LIKE 'A%'
+
+ORDER BY colname 
+
+LIMIT 
+
+select Query demo:
+
+select Nombre,Apellido from nombre where apellido = 'Doe';
+select Nombre,Apellido from nombre where  apellido like '%s'
+
+===============PHP Admin=======================================
+Nos permite manejar la base de datos que tenemos en nuestro servidor de una manera mas 
+interactiva y cómoda.
+
+-------- Cuando tenga problemas con paquetes:
+Ir a cd /var/lib/dpkg/info y borrar los paquetes que coincidan con los del problema luego apt upgrade y apt update
+----- cuando tenga problemas con procesos que interfieren:
+fuser -v /var/cache/debconf/config.dat
+
+Buscar lo que sale en la pagina
+/usr/share/doc/phpmyadmin
+
+para php el archivo /usr/share/phpmyadmin/config.inc.php
+$cfg['Servers'][$i]['controluser'] = 'pma';
+$cfg['Servers'][$i]['controlpass'] = 'password';
+
+El link de configuracion de php https://www.digitalocean.com/community/tutorials/how-to-install-phpmyadmin-from-source-debian-10
+
+===========Redes Linux Debian===============================
+Comando ip 
+ip a es como poner ifconfig 
+ip address show es como poner ifconfig
+ip -s l l nos permite ver las estadisticas de la interfaz
+ip link show   permite ver las interfaces a nivel de capa de enlace
+ip link set ens33 down  sirve para apagar la interfaz en cuestion 
+ip route show   nos muestra tablas de rutas así mismo
+ip neighbor show   todas las interfaces como las que estamos conectados.   
+
+============= TCP =================================
+/etc/services     muestra los principales puertos usados
+=======DNS===============================
+La resolución de nombres traduce nombres de sistemas en sus direcciones IP y viceversa. Así, la configuración consiste, básicamente en la creación de 2 zonas, una (zone “home.lan”) que convierte nombres en direcciones IP y otra (zone “1.168.192.in-addr.arpa”) que convierte direcciones IP en el respectivo nombre de sistema.
+
+Las zonas pueden declararse en el archivo /etc/bind/named.conf.local:
+
+Verificar que el archivo de configuración no contiene errores:
+
+named-checkconf
+
+netstat -h muestra los parametros del netstat
+netstat -rn muestra si estoy conectado a una red
+netstat -nlp    -n numeric  -l listening   -p programs
+netstat -putan  muestra puertos abiertos o cerrados en nuestro equipo
+
+======= archivos de configuracion debian ==================
+/etc/network/interfaces: permite bajar los servicios de red o una interfaz
+auto lo conexion automatica al local
+iface lo inet loopback: esta haciendo conexion a lo que consiga
+auto eth0: la red a la que este conectado
+ifdown eth0
+/etc/host :  siempre estan los nombre so direcciones con los cuales queremos conextar nuestro equipo 
+
+scp copia de archivos
+Pasar archivos /tmp por seguridad
+scp nombredelarchivo usuario@ip:/donde_va_a_realizar_la_copia
+para mover una carpeta debe ser de forma recursiva
+scp -r nombredelacarpeta usuario@ip:/donde_va_a_realizar_la_copia
+
+===============E links =========================
+Navegador via consola
+========SAMBA============================
+Samba e sun protocolo para conectar windows con el sistema de archivos de linux
+editar : /etc/samba/samba.conf
+
+============wordpress==============================
+wget  nos permite descargar archivos desde los sitios o alguna fuente en la web
+Tambien es una herramienta muy utiliada para verificar si estan sirviendo los index.php
+wget si traer el indes.php.
+
+
+========Respaldos====================
+
+Respaldo Full o Total: Se basa en la copia de todo el sistema. Y es el que voy a explicar más a fondo, por ser el más simple y practico en los sistemas pequeños como el de nosotros. Una copia total del sistema puede rondar unos 10 o 20 minutos dependiendo de la data que manejemos en nuestros equipos.
+
+Una nota importante en este caso es que para realizar las copias de seguridad por lo general se deben tomar en cuenta algunos servicios críticos del servidor como es el caso de las bases de datos. Ya que en muchas ocasiones estas pueden corromperse o dañarse, por lo invasivo que pueden llegar a ser algunos servicios de respaldo como es el caso de Data Protector o Bacula, pero ese es tema de otro curso.
+
+* Una forma sencilla de realizar un respaldo de seguridad es el comando TAR:
+
+La forma más sencilla de usar este comando es:
+
+$ tar cf copia_de_seguridad.tar /home
+
+En este ejemplo realizaríamos una copia de seguridad del directorio /home. También podemos hacer una compresión en el mismo momento usando gzip, para lo cual añadiriamos la opción z de la siguiente forma:
+
+tar czf copia_de_seguridad.tar.gz /home
+
+De esta manera habríamos creado entonces una copia comprimida del directorio /home, conservando todos los permisos y su estructura.
+
+El archivo se nos creara, evidentemente en el directorio donde nos encontremos situados. Es muy importante que no estemos situados en un directorio que no sea /home, ya que si no, nos crearía un bucle y la copia de seguridad intentaría hacer una copia de ella misma.
+
+Dentro de las opciones del comando tar tenemos:
+
+c: Crea un archivo tar.
+x: Extrae el contenido de un archivo.
+v: Muestra lo que esta haciendo en pantalla.
+z: Comprime o descomprime un archivo.
+
+La fórmula a utilizar para hacer una copia de todo el sistema no sería muy distinta.
+
+ tar cvzf copia_de_seguridad.tar.gz /
+
+En esta oportunidad hemos añadido la opción v, que hace que nos muestre en pantalla lo que esta haciendo. Ahora solo nos queda evitar que se produzca un bucle, es decir, que nos haga una copia de la copia de seguridad, para ello, usaremos la opción exclude.
+
+Vamos a suponer que deseamos evitar el directorio /mnt, ya que no queremos que nos copie la unidad USB, que tenemos montada en otra partición. Lo haríamos de la siguiente manera:
+
+$ tar czf copia_de_seguridad.tar.gz / -exclude /mnt
+
+El comando split lo que hace es dividir el archivo grande en otros más pequeños. Por ejemplo, sí queremos dividir el archivo copia_de_seguridad en archivos de 1G, lo haríamos de la siguiente manera:
+
+$ split -b 1g copia_de_seguridad.tar.gz
+
+Sí deseamos utilizar MB en vez de G cambiaríamos "g" por una "m".
+
+Para volverlo a juntar utilizaríamos el comando cat de la siguiente manera:
+
+cat archivo1 archivo2 archivo3 archivo4... >copia_de_seguridad.tar.gz
+
+======Monitoreo sistema Linux=====================
+top: nos muestra información sobre nuestro sistema
+htop: Tiene muchas de las opciones del top 
+free -mto 
+
+===========OWNCLOUD========================
+ownCloud es una aplicación de software libre del tipo Servicio de alojamiento de archivos, que permite el almacenamiento en línea y aplicaciones en línea (cloud computing). ownCloud puede ser instalado dentro de un servidor que disponga de una versión reciente de PHP (mayor o igual a 5.6) y soporte de SQLite (base de datos por defecto), MySQL o PostgreSQL.
+
+para abrir owncloud en un navegador se pone:
+
+192.168.188.100/owncloud/
+
